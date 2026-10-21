@@ -4,6 +4,7 @@ A Claude mod that shows how much of your Claude plan you have used, how much rem
 
 It adds:
 
+- an always-visible **band above the prompt**: one line per limit with a usage bar, used %, remaining %, and reset time with countdown;
 - a **Claude quota** pane beside the chat, with one card per limit (5-hour session, weekly): a usage bar, used %, remaining %, and the reset countdown with its day and time;
 - a **status line** entry, e.g. `5h 34% (2h 10m) · 7d 18% (4d 3h)`;
 - a **`/quota`** command that reopens the pane and prints the same figures.
