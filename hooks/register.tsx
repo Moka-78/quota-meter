@@ -78,6 +78,26 @@ export const register: Register = on => {
     }
   })
 
+  on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
+    const limits = await read($, limitsAtom)
+    if (e.props.hasSurvey || !limits.length) return next(e)
+    const { Box, Text } = $.ui.resolve(e)
+    const now = await $.clock.now()
+
+    return (
+      <Box flexDirection="row" flexWrap="wrap" columnGap={2}>
+        {limits.map(l => (
+          <Text>
+            <Text bold>{l.kind === 'five_hour' ? 'Session' : l.kind === 'seven_day' ? 'Weekly' : label(l.kind)} </Text>
+            <Text color={color(l.percentUsed)}>{bar(l.percentUsed, 10)}</Text>
+            <Text> {Math.round(l.percentUsed)}% used · {Math.max(0, 100 - Math.round(l.percentUsed))}% left · </Text>
+            <Text dimColor>resets {at(l.resetsAt)} ({countdown(l.resetsAt, now)})</Text>
+          </Text>
+        ))}
+      </Box>
+    )
+  })
+
   on('ui.render', { component: 'Pane', requestId: PANE }, async ($, e) => {
     const { Box, Text } = $.ui.resolve(e)
     const limits = await read($, limitsAtom)
