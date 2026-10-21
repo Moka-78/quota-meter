@@ -1,0 +1,5 @@
+{
+  "name": "quota-meter",
+  "owner": { "name": "Moka-78" },
+  "plugins": [{ "name": "quota-meter", "source": "./" }]
+}

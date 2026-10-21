@@ -1,0 +1,10 @@
+{
+  "name": "quota-meter",
+  "version": "0.1.0",
+  "description": "Shows Claude plan usage: used, remaining and reset time",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "Moka-78"
+  },
+  "license": "MIT"
+}
